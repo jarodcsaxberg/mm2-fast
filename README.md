@@ -25,14 +25,14 @@ The usage of mm2-fast is same as minimap2. Here is an example of mapping ONT rea
 ```
 
 ### Accuracy evaluation
-As mm2-fast is an accelerated version of minimap2-v2.22, the output of mm2-fast can be verified against minimap2-v2.22. Note that the optimized chaining in mm2-fast is strictly required to be run with a chaining parameter *max-chain-skip=infinity*. Note that having parameter *max-chain-skip=infinity* leads to higher chaining precision. Therefore, for correctness verification, minimap2 should run with a larger value of *max-chain-skip* parameter. Follow the below steps to verify the accuracy of mm2-fast.
+As this verion of mm2-fast is an accelerated version of minimap2-v2.24, the output of mm2-fast can be verified against minimap2-v2.24. Note that the optimized chaining in mm2-fast is strictly required to be run with a chaining parameter *max-chain-skip=infinity*. Note that having parameter *max-chain-skip=infinity* leads to higher chaining precision. Therefore, for correctness verification, minimap2 should run with a larger value of *max-chain-skip* parameter. Follow the below steps to verify the accuracy of mm2-fast.
 ```sh
 git clone --recursive https://github.com/bwa-mem2/mm2-fast.git mm2-fast   
 cd mm2-fast && make 
 ./minimap2 -ax map-ont test/MT-human.fa test/MT-orang.fa --max-chain-skip=1000000 > mm2-fast_output
 ```
 ```sh
-git clone https://github.com/lh3/minimap2.git -b v2.22
+git clone https://github.com/lh3/minimap2.git -b v2.24
 cd minimap2 && make
 ./minimap2 -ax map-ont test/MT-human.fa test/MT-orang.fa --max-chain-skip=1000000 > minimap2_output
 ```
