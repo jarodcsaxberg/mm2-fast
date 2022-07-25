@@ -1,3 +1,4 @@
+[![GitHub Downloads](https://img.shields.io/github/downloads/bwa-mem2/mm2-fast/total?label=GitHub%20Downloads)](https://github.com/bwa-mem2/mm2-fast/releases)
 ## mm2-fast
 ### Introduction
 mm2-fast is an accelerated implementation of minimap2 on modern CPUs. mm2-fast accelerates all the three major modules of minimap2: (a) seeding, (b) chaining, and (c) pairwise alignment, achieving up to 1.8x speedup using AVX512 over minimap2. 
