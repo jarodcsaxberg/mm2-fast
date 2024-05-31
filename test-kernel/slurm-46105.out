@@ -1,0 +1,16 @@
+Libwb library build done
+Successfully built kernel
+Success load_sorted_array, n = 3111
+failed read
+Success load_rmi
+L0_PARAMETER0 = 1.537038E-320, L0_PARAMETER1 = 9.092290E-320, L1_SIZE = 82969
+loading keys...
+TIMER LOG: rmi_lookup start- 18461112171929385
+TIMER LOG: rmi_lookup end- 18461112172079399
+TIMER LOG: rmi_lookup time- 150014
+TIMER LOG: warmup start- 18461112172090350
+TIMER LOG: warmup end- 18461112172171274
+TIMER LOG: timing start- 18461112172177962
+Total time: 0.098400
+TIMER LOG: timing end- 18461112172479337
+The solution is NOT correct
