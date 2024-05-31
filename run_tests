@@ -1,0 +1,37 @@
+#!/bin/bash
+# The interpreter used to execute the script
+
+#“#SBATCH” directives that convey submission options:
+
+#SBATCH --job-name=ee590_rmi_seeding
+#SBATCH --mail-type=BEGIN,END
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --time=5:00
+#SBATCH --account=sadasivan
+#SBATCH --partition=devel
+
+# The application(s) to execute along with its input arguments and options:
+
+if [ "$#" -ne 3 ]; then
+    echo "Usage: ./run_tests {input1} {input2} {output}"
+    exit 1
+fi
+
+#SBATCH --partition=devel
+#SBATCH --partition=mi1004x
+
+if [ "$#" -eq  3 ]; then
+    echo '----- cleanup old runs -----'
+    cd test
+    rm -rf ${1}_map*
+    echo '----- build_rmi.sh -----'
+    cd ..
+    ./build_rmi.sh test/$1 map-ont
+    echo '----- create rmi_params -----'
+    cp -rf test/${1}_map-ont_minimizers_key_value_sorted_keys.uint64 test/${1}_map-ont_minimizers_key_value_sorted_keys.rmi_PARAMETERS
+    echo '----- make clean && make lhash=1 -----'
+    make clean && make lhash=1
+    echo '----- minimap2 -----'
+    ./minimap2 -ax map-ont test/$1 test/$2 > $3
+fi
