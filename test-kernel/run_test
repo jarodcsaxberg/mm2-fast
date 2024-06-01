@@ -1,0 +1,19 @@
+#!/bin/bash
+# The interpreter used to execute the script
+
+#“#SBATCH” directives that convey submission options:
+
+#SBATCH --job-name=ee590_rmi_seeding
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --time=5:00
+#SBATCH --account=sadasivan
+#SBATCH --partition=devel
+
+export LD_LIBRARY_PATH=$PWD/libwb/build/:$LD_LIBRARY_PATH
+
+./build kernel.cu kernel
+
+# ./$1 -e test/$2/output.raw -i test/$2/input0.raw,test/$2/input1.raw -o test/$2/attempt.raw -t vector
+
+./kernel -e test/input/positions.raw -i test/input/keys.raw -o test/input/attempt.raw -t vector
